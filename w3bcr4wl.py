@@ -2,54 +2,6 @@ print("Starting...")
 import os
 import importlib.util
 import time, sys
-
-package_requests = 'requests'
-spec_requests = importlib.util.find_spec(package_requests)
-if spec_requests is None:
-    os.system('clear')
-    print("Installing module (requests)")
-    os.system("pip install requests")
-else:
-    pass
-
-package_colorama = 'colorama'
-spec_colorama = importlib.util.find_spec(package_colorama)
-if spec_colorama is None:
-    os.system('clear')
-    print("Installing module (colorama)")
-    os.system("pip install colorama")
-else :
-    pass
-
-package_pyfiglet = 'pyfiglet'
-spec_pyfiglet = importlib.util.find_spec(package_pyfiglet)
-if spec_pyfiglet is None:
-    os.system('clear')
-    print("Installing module (pyfiglet)")
-    os.system("pip install pyfiglet")
-else:
-    pass
-
-
-
-package_datetime = 'datetime'
-spec_datetime = importlib.util.find_spec(package_datetime)
-if spec_datetime is None:
-    os.system('clear')
-    print("Installing module (datetime)")
-    os.system("pip install datetime")
-else:
-    pass
-
-package_dnspython = 'dnspython'
-spec_dnspython = importlib.util.find_spec(package_dnspython)
-if spec_dnspython is None:
-    os.system('clear')
-    print("Installing module (dnspython)")
-    os.system("pip3 install dnspython")
-else:
-    pass
-
 import pyfiglet, requests, dns.resolver
 from colorama import Fore
 from data import *

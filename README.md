@@ -20,12 +20,12 @@ src="https://readme-typing-svg.herokuapp.com/?size=35&width=800&lines=w3b_cr4wl+
 * IP finder
 
 # INSTALLATION
-```
-git clone https://github.com/47hxl-53r/webcr4wl
-cd webcr4wl
-python3 requirements.py
-python3 w3bcr4wl.py
-```
+
+`git clone https://github.com/47hxl-53r/webcr4wl`
+`cd webcr4wl`
+`python3 requirements.py`
+`python3 w3bcr4wl.py`
+
 
 # CONTACT
 Click [here](https://wa.me/+918606672509) whatsapp me!

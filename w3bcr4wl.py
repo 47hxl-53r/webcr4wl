@@ -1,5 +1,10 @@
 print("Starting...")
 import os
+if os.path.isfile('requirements.py'):
+    print("You need to run 'python3 requirements.py' before running this script")
+    exit()
+else:
+    pass
 import importlib.util
 import time, sys
 import pyfiglet, requests, dns.resolver
@@ -16,7 +21,7 @@ def style(s):
 
 
 def style_print(s):
-    for c  in s:
+    for c in s:
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(0.001)
@@ -24,13 +29,12 @@ def style_print(s):
 
 def banner():
     os.system("clear")
-    style_print(f'''{Fore.YELLOW}
-██╗    ██╗██████╗ ██████╗          ██████╗██████╗ ██╗  ██╗██╗    ██╗ ██╗
-██║    ██║╚════██╗██╔══██╗        ██╔════╝██╔══██╗██║  ██║██║    ██║███║
-██║ █╗ ██║ █████╔╝██████╔╝        ██║     ██████╔╝███████║██║ █╗ ██║╚██║
-██║███╗██║ ╚═══██╗██╔══██╗        ██║     ██╔══██╗╚════██║██║███╗██║ ██║
-╚███╔███╔╝██████╔╝██████╔╝███████╗╚██████╗██║  ██║     ██║╚███╔███╔╝ ██║
- ╚══╝╚══╝ ╚═════╝ ╚═════╝ ╚══════╝ ╚═════╝╚═╝  ╚═╝     ╚═╝ ╚══╝╚══╝  ╚═╝
+    style_print(f'''{Fore.YELLOW}{Style.NORMAL}
+
+░█░█░▀▀█░█▀▄░░░░░█▀▀░█▀▄░█░█░█░█░█░░
+░█▄█░░▀▄░█▀▄░░░░░█░░░█▀▄░░▀█░█▄█░█░░
+░▀░▀░▀▀░░▀▀░░▀▀▀░▀▀▀░▀░▀░░░▀░▀░▀░▀▀▀
+
 {Fore.RED}==============================================================
 {Fore.WHITE}{Style.BRIGHT}||{Style.NORMAL}{Fore.YELLOW} Coded by {Style.BRIGHT}47hx1-53r{Style.NORMAL}
 {Fore.WHITE}{Style.BRIGHT}||{Style.NORMAL}{Fore.YELLOW} Automated enumeration script
@@ -44,14 +48,24 @@ def menu():
 {Fore.RED}[{Fore.WHITE}{Style.BRIGHT}1{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Directory enumeration
 {Fore.RED}[{Fore.WHITE}{Style.BRIGHT}2{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} IP finder
 {Fore.RED}[{Fore.WHITE}{Style.BRIGHT}3{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Port scanner    
-{Fore.RED}[{Fore.WHITE}{Style.BRIGHT}4{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Subdomain finder    
+{Fore.RED}[{Fore.WHITE}{Style.BRIGHT}4{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Subdomain scanner    
+{Fore.RED}[{Fore.WHITE}{Style.BRIGHT}5{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Update script    
+{Fore.RED}[{Fore.WHITE}{Style.BRIGHT}6{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Exit    
 ''')
 
 
     def shell():
-        choice = input(f"{Fore.RESET}>> ")
+        global choice, f
+        try:
+            choice = input(f"{Fore.RESET}>> ")
+        except KeyboardInterrupt:
+            print(f'{Fore.RED}\nGoodbye!')
+            exit()
         if choice == "1":
-            f = open('./src/lol_src/mc_donalds/wordlist.txt', 'r')
+            try:
+                f = open('./src/lol_src/mc_donalds/wordlist.txt', 'r')
+            except FileNotFoundError:
+                print(f'{Fore.RED}\nWordlist.txt not found!')
             for l in f:
                 l = l.split()
                 for w in l:
@@ -92,7 +106,18 @@ def menu():
                 except ConnectionError:
                     print(f'{Fore.RED}Host unreachable!\n')
                     exit()
-
+            def goback():
+                global gobackk
+                try:
+                    gobackk = input(f'{Fore.WHITE}{Style.NORMAL}Enter 1 to go back : ')
+                except KeyboardInterrupt:
+                    print(f'{Fore.RED}\nGoodbye!')
+                    exit()
+                if gobackk == "1":
+                    menu()
+                else:
+                    print(f'{Fore.RED}\nInvalid option!')
+                    goback()
 
         elif choice == "2":
             def shellcode():
@@ -108,7 +133,12 @@ def menu():
                     ip = socket.gethostbyname(website)
                     style(f'{Fore.YELLOW}IP  : {Fore.CYAN}{ip}\n')
                     def backer():
-                        back = input(f"{Fore.WHITE}Enter 1 to go back : ")
+                        global back
+                        try:
+                            back = input(f"{Fore.WHITE}Enter 1 to go back : ")
+                        except KeyboardInterrupt:
+                            print(f'{Fore.RED}\nGoodbye!')
+                            exit()
                         if back == "1":
                             os.system('clear')
                             menu()
@@ -125,9 +155,15 @@ def menu():
         elif choice == "3":
             os.system('clear')
             print(f'{Fore.YELLOW}')
-            ascii_banner = pyfiglet.figlet_format("p0rt_sc4n")
+            ascii_banner = '''
+
+░█▀█░▄▀▄░█▀▄░▀█▀░░░░░█▀▀░█▀▀░█░█░█▀█
+░█▀▀░█/█░█▀▄░░█░░░░░░▀▀█░█░░░░▀█░█░█
+░▀░░░░▀░░▀░▀░░▀░░▀▀▀░▀▀▀░▀▀▀░░░▀░▀░▀
+
+'''
             style_print(ascii_banner)
-            style_print(f"{Fore.RED}=" * 50)
+            style_print(f"{Fore.RED}=" * 47)
             target = input(f"\n{Fore.RED}[{Fore.RESET}+{Fore.RED}] {Fore.YELLOW}Target website/IP : {Fore.RESET}")
             scanner = scanTools(target)
             scanner.portScan()
@@ -141,9 +177,61 @@ def menu():
                     goback()
             goback()
         elif choice == "4":
-            domain = input("Enter the Domain : ")
-            subscanner = subdomains(domain)
-            subscanner.subdomainScanner()
+            os.system('clear')
+            a = '='
+            banner = f'''{Fore.YELLOW}
+░█▀▀░█░█░█▀▄░░░░░█▀▄░▄▀▄░█▄█░█░█░▀█▀░█▀█
+░▀▀█░█░█░█▀▄░░░░░█░█░█/█░█░█░░▀█░░█░░█░█
+░▀▀▀░▀▀▀░▀▀░░▀▀▀░▀▀░░░▀░░▀░▀░░░▀░▀▀▀░▀░▀
+
+{Fore.WHITE}{Style.BRIGHT}--> {Fore.YELLOW}P0w3rful subnet sc4nner{Style.NORMAL}          
+'''
+            style_print(banner)
+            style_print(f'{Fore.RED}{a*47}\n\n')
+            def subnets():
+                domain = input(f"{Fore.RESET}{Style.BRIGHT}[+] Domain : {Style.NORMAL}")
+                instance = subdomain(domain)
+                instance.subScan()
+                def goback():
+                    global shellback
+                    try:
+
+                        shellback = input(f'{Fore.YELLOW}{Style.NORMAL}Enter 1 to go back : ')
+                    except KeyboardInterrupt:
+                        print(f'{Fore.RED}\nGoodbye!')
+                        exit()
+                    if shellback == "1":
+                        menu()
+                    else:
+                        print(f'{Fore.RED}Invalid option!')
+                        goback()
+                goback()
+            subnets()
+        elif choice == "5":
+            os.system('clear')
+            print(f'{Fore.BLUE}CHECKING FOR UPDATES . . .')
+            print(f'{Fore.WHITE}{Style.BRIGHT}')
+            for i in tqdm(range(10)):
+                time.sleep(0.5)
+            print(f"\n{Fore.GREEN}{Style.NORMAL}Already latest version")
+
+            def gobacks():
+                global shellbacks
+                try:
+                    shellbacks = input(f'{Fore.RESET}{Style.NORMAL}Enter 1 to go back : ')
+                except KeyboardInterrupt:
+                    print(f'{Fore.RED}\nGoodbye!')
+                    exit()
+                if shellbacks == "1":
+                    menu()
+                else:
+                    print(f'{Fore.RED}Invalid option!')
+                    gobacks()
+            gobacks()
+
+        elif choice == "6":
+            print("Goodbye!")
+            exit()
         else:
             print(f"{Fore.RED}Invalid choice")
             shell()

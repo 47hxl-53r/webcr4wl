@@ -28,7 +28,7 @@ os.system('pip install tqdm')
 
 # SELF-KILLING
 os.system('clear')
-os.system('THIS FILE IS GOING TO SELF DELETE IN 3 SECONDS...')
-time.sleep(2)
+os.system('THIS FILE IS GOING TO SELF-DELETE IN 3 SECONDS...')
+time.sleep(3)
 os.system('clear')
 os.system('rm -rf requirements.py')

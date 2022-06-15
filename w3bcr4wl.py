@@ -11,22 +11,16 @@ import pyfiglet, requests, dns.resolver
 from colorama import Fore
 from data import *
 dirs = []
-
-
 def style(s):
     for c in s:
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(0.05)
-
-
 def style_print(s):
     for c in s:
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(0.001)
-
-
 def banner():
     os.system("clear")
     style_print(f'''{Fore.YELLOW}{Style.NORMAL}
@@ -40,8 +34,6 @@ def banner():
 {Fore.WHITE}{Style.BRIGHT}||{Style.NORMAL}{Fore.YELLOW} Automated enumeration script
 {Fore.RED}==============================================================
 ''')
-
-
 def menu():
     banner()
     print(f'''
@@ -52,10 +44,8 @@ def menu():
 {Fore.RED}[{Fore.WHITE}{Style.BRIGHT}5{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Update script    
 {Fore.RED}[{Fore.WHITE}{Style.BRIGHT}6{Style.NORMAL}{Fore.RED}] {Fore.RESET}->{Fore.YELLOW} Exit    
 ''')
-
-
     def shell():
-        global choice, f
+        global choice, f, target
         try:
             choice = input(f"{Fore.RESET}>> ")
         except KeyboardInterrupt:
@@ -76,20 +66,21 @@ def menu():
             style(f"{Fore.YELLOW}Bruteforce initialising...\n")
             if raw_url.startswith('www') and not raw_url.endswith('/'):
                 raw_url = 'https://' + raw_url + '/'
+                pass
             elif raw_url.startswith("http://") and raw_url.endswith("/"):
                 pass
-            elif raw_url.startswith("https://") == False and raw_url.endswith("/"):
+            elif raw_url.startswith("https://") is False and raw_url.endswith("/"):
                 raw_url = f'https://{raw_url}'
+                pass
             elif raw_url.startswith("https://") and raw_url.endswith("/"):
                 pass
-            elif raw_url.startswith('www') or raw_url.startswith('https://') == False and raw_url.endswith(
+            elif raw_url.startswith('www') or raw_url.startswith('https://') is False and raw_url.endswith(
                     '/') == False:
-
                 raw_url = f'https://{raw_url}/'
+                pass
             else:
                 raw_url = raw_url + '/'
                 print(raw_url)
-
             for dirr in dirs:
                 try:
                     response = requests.get(f'{raw_url + dirr}')
@@ -118,22 +109,24 @@ def menu():
                 else:
                     print(f'{Fore.RED}\nInvalid option!')
                     goback()
-
         elif choice == "2":
             def shellcode():
-                website = input(f"{Fore.YELLOW}Enter website : {Fore.RESET}")
+                try:
+                    website = input(f"{Fore.YELLOW}Enter website : {Fore.RESET}")
+                except KeyboardInterrupt:
+                    print(f'{Fore.RED}\nGoodbye!')
+                    exit()
                 if website.startswith("https://"):
                     website = website[8:]
                     pass
                 elif website.startswith("http://"):
                     website = website[7:]
                     pass
-
                 try:
                     ip = socket.gethostbyname(website)
                     style(f'{Fore.YELLOW}IP  : {Fore.CYAN}{ip}\n')
                     def backer():
-                        global back
+                        global back, website
                         try:
                             back = input(f"{Fore.WHITE}Enter 1 to go back : ")
                         except KeyboardInterrupt:
@@ -146,12 +139,10 @@ def menu():
                             style(f"{Fore.RED}Invalid option!\n")
                             backer()
                     backer()
-
                 except:
                     print(f"\n{Fore.RED}ERROR OCCURRED")
                     exit()
             shellcode()
-
         elif choice == "3":
             os.system('clear')
             print(f'{Fore.YELLOW}')
@@ -164,12 +155,21 @@ def menu():
 '''
             style_print(ascii_banner)
             style_print(f"{Fore.RED}=" * 47)
-            target = input(f"\n{Fore.RED}[{Fore.RESET}+{Fore.RED}] {Fore.YELLOW}Target website/IP : {Fore.RESET}")
+            try:
+                target = input(f"\n{Fore.RED}[{Fore.RESET}+{Fore.RED}] {Fore.YELLOW}Target website/IP : {Fore.RESET}")
+            except KeyboardInterrupt:
+                print(f'{Fore.RED}\nGoodbye!')
+                exit()
             scanner = scanTools(target)
             scanner.portScan()
             def goback():
-                back = input(f'{Fore.RESET}Enter 1 to go back : {Style.NORMAL}')
-                if back == "1":
+                global backie
+                try:
+                    backie = input(f'{Fore.RESET}Enter 1 to go back : {Style.NORMAL}')
+                except KeyboardInterrupt:
+                    print(f'{Fore.RED}\nGoodbye!')
+                    exit()
+                if backie == "1":
                     os.system("clear")
                     menu()
                 else:
@@ -184,7 +184,7 @@ def menu():
 ░▀▀█░█░█░█▀▄░░░░░█░█░█/█░█░█░░▀█░░█░░█░█
 ░▀▀▀░▀▀▀░▀▀░░▀▀▀░▀▀░░░▀░░▀░▀░░░▀░▀▀▀░▀░▀
 
-{Fore.WHITE}{Style.BRIGHT}--> {Fore.YELLOW}P0w3rful subnet sc4nner{Style.NORMAL}          
+{Fore.WHITE}{Style.BRIGHT}--> {Fore.YELLOW}P0w3rful subn3t sc4nner{Style.NORMAL}          
 '''
             style_print(banner)
             style_print(f'{Fore.RED}{a*47}\n\n')
@@ -195,7 +195,6 @@ def menu():
                 def goback():
                     global shellback
                     try:
-
                         shellback = input(f'{Fore.YELLOW}{Style.NORMAL}Enter 1 to go back : ')
                     except KeyboardInterrupt:
                         print(f'{Fore.RED}\nGoodbye!')
@@ -214,7 +213,6 @@ def menu():
             for i in tqdm(range(10)):
                 time.sleep(0.5)
             print(f"\n{Fore.GREEN}{Style.NORMAL}Already latest version")
-
             def gobacks():
                 global shellbacks
                 try:
@@ -228,7 +226,6 @@ def menu():
                     print(f'{Fore.RED}Invalid option!')
                     gobacks()
             gobacks()
-
         elif choice == "6":
             print("Goodbye!")
             exit()
@@ -236,6 +233,4 @@ def menu():
             print(f"{Fore.RED}Invalid choice")
             shell()
     shell()
-
-
 menu()

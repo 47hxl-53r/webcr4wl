@@ -9,28 +9,19 @@ import dns.resolver
 from queue import Queue
 queue = Queue()
 open_ports = []
-
-
-
 def style(s):
     for c in s:
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(0.03)
-
-
 def style_print(s):
     for c  in s:
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(0.001)
-
-
 class scanTools:
-
     def __init__(self, target):
         self.target = target
-
     def portScan(self):
         global target, scanning
         if self.target.startswith("https://"):
@@ -61,7 +52,6 @@ class scanTools:
                 style(f"{Fore.RED}Host not found!\n")
                 print(e)
                 exit()
-
         else:
             try:
                 target = socket.gethostbyname(self.target)
@@ -69,7 +59,6 @@ class scanTools:
             except socket.gaierror:
                 style(f"{Fore.RED}Host not found!\n")
                 exit()
-
         style_print(f"{Fore.RED}=" * 47)
         a = "="
         style(f'\n{Fore.YELLOW}{Style.BRIGHT}STATUS{Style.NORMAL}  : {Fore.CYAN}Scanning Target : {Fore.LIGHTGREEN_EX}{target}\n{Fore.YELLOW}{Style.BRIGHT}STATUS{Style.NORMAL}  : {Fore.CYAN}Started scan at : {Fore.LIGHTGREEN_EX}{str(datetime.datetime.now())}\n')
@@ -85,11 +74,9 @@ class scanTools:
                 return True
             except:
                 return False
-
         def fill_queue(port_list):
             for port in port_list:
                 queue.put(port)
-
         def worker():
             while not queue.empty():
                 port = queue.get()
@@ -98,7 +85,6 @@ class scanTools:
                     open_ports.append(port)
         port_list = range(1, 1024)
         fill_queue(port_list)
-
         thread_list = []
 
         for t in range(600):

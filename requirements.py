@@ -1,4 +1,35 @@
-import base64, codecs
+#######################
+import base64, codecs #
+#######################
+############# 
+ ##         ##
+  ##         ##
+   ##         ##
+    ##         ##
+     ##         ##
+      #############
+       ##############
+        ##         ##
+         ##         ##
+          ##         ##
+           ##         ##
+            ##         ##
+             #############
+              ############# 
+               ##         ##
+                ##         ##
+                 ##         ##
+                  ##         ##
+                   ##         ##
+                    #############
+                     ##############
+                      ##         ##
+                       ##         ##
+                        ##         ##
+                         ##         ##
+                          ##         ##
+                           #############
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 magic = 'aW1wb3J0IG9zLCB0aW1lCnByaW50KCJQTEVBU0UgV0FJVCBXSElMRSBET1dOTE9BRElORyBUSEUgUkVRVUlSRU1FTlRTLi4uXG4iKQoKIyBSRVFVRVNUUwpvcy5zeXN0ZW0oJ2NsZWFyJykKcHJpbnQoIkluc3RhbGxpbmcgcmVxdWVzdHMiKQpvcy5zeXN0ZW0oJ3BpcCBpbnN0YWxsIHJlcXVlc3RzJykKCiMgQ09MT1JBT'
 love = 'HRXo3Zhp3ymqTIgXPqwoTIupvpcPaOlnJ50XPWWoaA0LJkfnJ5aVTAioT9lLJ1uVvxXo3Zhp3ymqTIgXPWjnKNtnJ5mqTSfoPOwo2kipzSgLFVcPtbwVREBH1OMIRuCGtcipl5mrKA0MJ0bW2AfMJSlWlxXpUWcoaDbW0yhp3EuoTkcozptMT5mpUy0nT9hWlxXo3Zhp3ymqTIgXPqjnKNtnJ5mqTSfoPOxoaAjrKEbo24aXD'
 god = 'oKIyBQWUZJR0xFVApvcy5zeXN0ZW0oJ2NsZWFyJykKcHJpbnQoJ0luc3RhbGxpbmcgcHlmaWdsZXQnKQpvcy5zeXN0ZW0oJ3BpcCBpbnN0YWxsIHB5ZmlnbGV0JykKCiNUUURNCm9zLnN5c3RlbSgnY2xlYXInKQpwcmludCgnSW5zdGFsbGluZyBhZGRpdGlvbmFsIHBhY2thZ2VzLi4uJykKb3Muc3lzdGVtKCdwaXAgaW5'
